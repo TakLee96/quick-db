@@ -8,7 +8,8 @@ A lightweight and very-easy-to-use key-value pair database. Data can be stored p
 - Import
 
 ```
-<script type="text/javascript" src="https://quick-db.herokuapp.com/quick-db.js"></script>```
+<script type="text/javascript" src="https://quick-db.herokuapp.com/quick-db.js"></script>
+```
 
 - Usage
 
