@@ -1,0 +1,33 @@
+{
+  "name": "quick-db",
+  "version": "1.0.0",
+  "description": "a very-easy-to-use database that can run both locally and remotely",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakLee96/quick-db.git"
+  },
+  "keywords": [
+    "database",
+    "fast",
+    "quick",
+    "easy",
+    "key-value",
+    "pair"
+  ],
+  "author": "TakLee96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TakLee96/quick-db/issues"
+  },
+  "homepage": "https://github.com/TakLee96/quick-db#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.1"
+  }
+}
