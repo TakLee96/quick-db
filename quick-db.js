@@ -40,7 +40,7 @@ var Qdb = (function () {
             callback(new Error(method + " request to " + url + " timed out"));
         };
         if (data) {
-            xhr.send(JSON.stringify(data));
+            xhr.send(data);
         } else {
             xhr.send();
         }
@@ -53,13 +53,13 @@ var Qdb = (function () {
         request(this.userid, 'POST', { name: name, obj: obj }, callback);
     };
     Remote.prototype.get = function (name, callback) {
-        request('GET', { name: name }, callback);
+        request(this.userid, 'GET', { name: name }, callback);
     };
     Remote.prototype.rm = function (name, callback) {
-        request('DELETE', name, callback);
+        request(this.userid, 'DELETE', name, callback);
     };
     Remote.prototype.clear = function (callback) {
-        request('DELETE', null, callback);
+        request(this.userid, 'DELETE', null, callback);
     };
 
     return function (userid) {

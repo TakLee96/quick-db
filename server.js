@@ -8,6 +8,8 @@ var db = {};
 
 app.use(function (req, res, next) {
     console.log("[%s] %s -> %s", new Date(), req.method, req.url);
+    console.log("request.body: %s", req.body);
+    console.log("request.param: %s", req.param);
     next();
 });
 
