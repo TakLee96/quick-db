@@ -22,7 +22,7 @@ var setRemote = function () {
 var getLocal = function () {
     var key = document.getElementById('key').value;
     var value = db.local.get(key);
-    document.getElementById('local').innerHTML = value;
+    document.getElementById('local').innerHTML = value || 'null';
     alert("local retrieve success!");
 };
 
@@ -32,7 +32,7 @@ var getRemote = function () {
         if (err) {
             alert(err); console.dir(err);
         } else {
-            document.getElementById('remote').innerHTML = value;
+            document.getElementById('remote').innerHTML = value || 'null';
             alert("remote retrieve success!");
         }
     });
@@ -41,7 +41,7 @@ var getRemote = function () {
 var delLocal = function () {
     var key = document.getElementById('key').value;
     db.local.rm(key);
-    alert("local save success!")
+    alert("local delete success!")
 };
 
 var delRemote = function () {

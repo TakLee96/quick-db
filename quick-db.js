@@ -29,14 +29,20 @@ var Qdb = (function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
-                    callback && callback(null, JSON.parse(xhr.responseText));
+                    if (callback) {
+                        callback(null, JSON.parse(xhr.responseText));
+                    }
                 } else {
-                    callback && callback(new Error(method + " request to " + url + " failed with status " + xhr.status));
+                    if (callback) {
+                        callback(new Error(method + " request to " + url + " failed with status " + xhr.status));
+                    }
                 }
             }
         };
         xhr.ontimeout = function () {
-            callback && callback(new Error(method + " request to " + url + " timed out"));
+            if (callback) {
+                callback(new Error(method + " request to " + url + " timed out"));
+            }
         };
 
         if (data) {
