@@ -7,7 +7,7 @@ var app = express();
 var db = {};
 
 app.use(function (req, res, next) {
-    console.log("[" + new Date() "] " + req.method + " -> " + req.url);
+    console.log("[%s] %s -> %s", new Date(), req.method, req.url);
     next();
 });
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuickDB</title>
+</head>
+<body>
+    <h1>QuickDB</h1>
+    <p>A fasted and easiest key-value pair database. Data can be stored permanently at the front end or asynchronously at the backend.</p>
+
+    <h2>How to use:</h2>
+    <ul>
+        <li>
+            <h3>Import</h3>
+            <code>
+                &lt;script type=&quot;text/javascript&quot; src=&quot;https://quick-db.herokuapp.com/quick-db.js&quot;&gt;&lt;/script&gt;
+            </code>
+        </li>
+        <li>
+            <h3>Usage</h3>
+            <code>
+                var db = new Qdb('your-userid-here');
+
+                db.local.set('arr', [1, 2, 3]);
+                db.local.get('arr'); // returns the array [1, 2, 3]
+                db.local.rm('arr');
+                db.local.clear();
+
+                db.remote.set('obj', {a: 1}, function (err) { ... });
+                db.remote.get('obj', function (err, obj) { ... }); // obj is the object {a: 1}
+                db.remote.rm('obj', function (err) { ... });
+                db.remove.clear(function (err) { ... });
+            </code>
+        </li>
+    </ul>
+
+    <h2>Real-Time Demo</h2>
+    <div>
+        <div>
+            <div>
+                <span>key</span>
+                <input type="text" id="key">
+            </div>
+            <div>
+                <span>value</span>
+                <input type="text" id="value">    
+            </div>
+            <div>
+                <button onclick="setLocal();">save locally</button>
+                <button onclick="setRemote();">save remotely</button>
+            </div>
+        </div>
+        <div>
+            <span>result from local db</span>
+            <span id="local"></span>
+            <button onclick="getLocal();">retrieve locally</button>
+        </div>
+        <div>
+            <span>result from remote db</span>
+            <span id="remote"></span>
+            <button onclick="getRemote();">retrieve remotely</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="quick-db.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
