@@ -8,8 +8,6 @@ var db = {};
 
 app.use(function (req, res, next) {
     console.log("[%s] %s -> %s", new Date(), req.method, req.url);
-    console.log("request.body: %s", req.body);
-    console.log("request.param: %s", req.param);
     next();
 });
 
@@ -19,12 +17,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/:userid', function (req, res, next) {
-    var userid = req.param.userid;
+    var userid = req.params.userid;
     var name = req.body.name;
     res.status(200).json(db[userid] && db[userid][name]).end();
+    console.dir(db);
 });
 app.post('/:userid', function (req, res, next) {
-    var userid = req.param.userid;
+    var userid = req.params.userid;
     var name = req.body.name;
     var obj = req.body.obj;
     if (!db[userid]) {
@@ -32,9 +31,10 @@ app.post('/:userid', function (req, res, next) {
     }
     db[userid][name] = obj;
     res.status(200).end();
+    console.dir(db);
 });
 app.delete('/:userid', function (req, res, next) {
-    var userid = req.param.userid;
+    var userid = req.params.userid;
     var name = req.body.name;
     if (name) {
         if (db[userid]) {
@@ -44,6 +44,7 @@ app.delete('/:userid', function (req, res, next) {
         delete db[userid];
     }
     res.status(200).end();
+    console.dir(db);
 });
 
 app.use(function (err, req, res, next) {

@@ -40,7 +40,8 @@ var Qdb = (function () {
             callback(new Error(method + " request to " + url + " timed out"));
         };
         if (data) {
-            xhr.send(data);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(data));
         } else {
             xhr.send();
         }
