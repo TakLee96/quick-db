@@ -26,7 +26,6 @@ var Qdb = (function () {
     var request = function (userid, method, data, callback) {
         var xhr = new XMLHttpRequest();
         var url = BASE_URL + userid;
-        xhr.open(method, url, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
@@ -39,10 +38,19 @@ var Qdb = (function () {
         xhr.ontimeout = function () {
             callback(new Error(method + " request to " + url + " timed out"));
         };
+
         if (data) {
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(JSON.stringify(data));
+            if (method == 'POST') {
+                xhr.open(method, url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(JSON.stringify(data));
+            } else {
+                var query = "?name=" + data;
+                xhr.open(method, url + query, true);
+                xhr.send();
+            }
         } else {
+            xhr.open(method, url, true);
             xhr.send();
         }
     };
@@ -54,7 +62,7 @@ var Qdb = (function () {
         request(this.userid, 'POST', { name: name, obj: obj }, callback);
     };
     Remote.prototype.get = function (name, callback) {
-        request(this.userid, 'GET', { name: name }, callback);
+        request(this.userid, 'GET', name, callback);
     };
     Remote.prototype.rm = function (name, callback) {
         request(this.userid, 'DELETE', name, callback);

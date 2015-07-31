@@ -18,12 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/:userid', function (req, res, next) {
     var userid = req.params.userid;
-    var name = req.body.name;
-    console.log("userid is %s", userid);
-    console.log("name is %s", name);
-    console.log("I should respond with %s", db[userid] && db[userid][name]);
+    var name = req.query.name;
     res.status(200).json(db[userid] && db[userid][name]).end();
-    console.dir(db);
 });
 app.post('/:userid', function (req, res, next) {
     var userid = req.params.userid;
@@ -34,11 +30,10 @@ app.post('/:userid', function (req, res, next) {
     }
     db[userid][name] = obj;
     res.status(200).end();
-    console.dir(db);
 });
 app.delete('/:userid', function (req, res, next) {
     var userid = req.params.userid;
-    var name = req.body.name;
+    var name = req.query.name;
     if (name) {
         if (db[userid]) {
             delete db[userid][name];
@@ -47,7 +42,6 @@ app.delete('/:userid', function (req, res, next) {
         delete db[userid];
     }
     res.status(200).end();
-    console.dir(db);
 });
 
 app.use(function (err, req, res, next) {
