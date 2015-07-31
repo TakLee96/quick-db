@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/:userid', function (req, res, next) {
     var userid = req.params.userid;
     var name = req.body.name;
+    console.log("userid is %s", userid);
+    console.log("name is %s", name);
     console.log("I should respond with %s", db[userid] && db[userid][name]);
     res.status(200).json(db[userid] && db[userid][name]).end();
     console.dir(db);
