@@ -37,3 +37,20 @@ var getRemote = function () {
         }
     });
 };
+
+var delLocal = function () {
+    var key = document.getElementById('key').value;
+    db.local.rm(key);
+    alert("local save success!")
+};
+
+var delRemote = function () {
+    var key = document.getElementById('key').value;
+    db.remote.rm(key, function (err) {
+        if (err) {
+            alert(err); console.dir(err);
+        } else {
+            alert("remote delete success!")
+        }
+    });
+};

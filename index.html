@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>QuickDB</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
     <h1>QuickDB</h1>
@@ -12,23 +13,23 @@
         <li>
             <h3>Import</h3>
             <code>
-                &lt;script type=&quot;text/javascript&quot; src=&quot;https://quick-db.herokuapp.com/quick-db.js&quot;&gt;&lt;/script&gt;
+                &lt;<span class="tag">script</span> type=&quot;<span class="quote">text/javascript</span>&quot; src=&quot;<span class="quote">https://quick-db.herokuapp.com/quick-db.js</span>&quot;&gt;&lt;/<span class="tag">script</span>&gt;
             </code>
         </li>
         <li>
             <h3>Usage</h3>
             <code>
-                var db = new Qdb('your-userid-here');<br>
+                <span class="keyword">var</span> db = <span class="keyword">new</span> Qdb('your-userid-here');<br>
                 <br>
                 db.local.set('arr', [1, 2, 3]);<br>
                 db.local.get('arr'); // returns the array [1, 2, 3]<br>
                 db.local.rm('arr');<br>
                 db.local.clear();<br>
                 <br>
-                db.remote.set('obj', {a: 1}, function (err) { ... });<br>
-                db.remote.get('obj', function (err, obj) { ... }); // obj is the object {a: 1}<br>
-                db.remote.rm('obj', function (err) { ... });<br>
-                db.remove.clear(function (err) { ... });
+                db.remote.set('obj', {a: 1}, <span class="keyword">function</span> (err) { ... });<br>
+                db.remote.get('obj', <span class="keyword">function</span> (err, obj) { ... }); // obj is the object {a: 1}<br>
+                db.remote.rm('obj', <span class="keyword">function</span> (err) { ... });<br>
+                db.remove.clear(<span class="keyword">function</span> (err) { ... });
             </code>
         </li>
     </ul>
@@ -46,16 +47,20 @@
             </div>
             <div>
                 <button onclick="setLocal();">save locally</button>
+                <button onclick="delLocal();">delete locally</button>
+            </div>
+            <div>
                 <button onclick="setRemote();">save remotely</button>
+                <button onclick="delRemote();">delete remotely</button>
             </div>
         </div>
         <div>
-            <span>result from local db</span>
+            <span>local</span>
             <button onclick="getLocal();">retrieve locally</button>
             <span id="local">null</span>
         </div>
         <div>
-            <span>result from remote db</span>
+            <span>remote</span>
             <button onclick="getRemote();">retrieve remotely</button>
             <span id="remote">null</span>
         </div>
