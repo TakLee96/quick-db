@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>QuickDB</h1>
-    <p>A fasted and easiest key-value pair database. Data can be stored permanently at the front end or asynchronously at the backend.</p>
+    <p>A fastest and easiest key-value pair database. Data can be stored permanently at the front end or asynchronously at the back end.</p>
 
     <h2>How to use:</h2>
     <ul>
@@ -18,16 +18,16 @@
         <li>
             <h3>Usage</h3>
             <code>
-                var db = new Qdb('your-userid-here');
-
-                db.local.set('arr', [1, 2, 3]);
-                db.local.get('arr'); // returns the array [1, 2, 3]
-                db.local.rm('arr');
-                db.local.clear();
-
-                db.remote.set('obj', {a: 1}, function (err) { ... });
-                db.remote.get('obj', function (err, obj) { ... }); // obj is the object {a: 1}
-                db.remote.rm('obj', function (err) { ... });
+                var db = new Qdb('your-userid-here');<br>
+                <br>
+                db.local.set('arr', [1, 2, 3]);<br>
+                db.local.get('arr'); // returns the array [1, 2, 3]<br>
+                db.local.rm('arr');<br>
+                db.local.clear();<br>
+                <br>
+                db.remote.set('obj', {a: 1}, function (err) { ... });<br>
+                db.remote.get('obj', function (err, obj) { ... }); // obj is the object {a: 1}<br>
+                db.remote.rm('obj', function (err) { ... });<br>
                 db.remove.clear(function (err) { ... });
             </code>
         </li>
@@ -51,13 +51,13 @@
         </div>
         <div>
             <span>result from local db</span>
-            <span id="local"></span>
             <button onclick="getLocal();">retrieve locally</button>
+            <span id="local">null</span>
         </div>
         <div>
             <span>result from remote db</span>
-            <span id="remote"></span>
             <button onclick="getRemote();">retrieve remotely</button>
+            <span id="remote">null</span>
         </div>
     </div>
 

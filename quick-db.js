@@ -1,17 +1,19 @@
 var Qdb = (function () {
 
     if (window.localStorage) {
-        var local = {};
-        local.set = function (name, obj) {
-            localStorage.setItem(name, JSON.stringify(obj));
+        var Local = function (userid) {
+            this.userid = userid;
         };
-        local.get = function (name) {
-            return JSON.parse(localStorage.getItem(name));
+        Local.prototype.set = function (name, obj) {
+            localStorage.setItem(this.userid + "." + name, JSON.stringify(obj));
         };
-        local.rm = function (name) {
-            return localStorage.removeItem(name);
+        Local.prototype.get = function (name) {
+            return JSON.parse(localStorage.getItem(this.userid + "." + name));
         };
-        local.clear = function () {
+        Local.prototype.rm = function (name) {
+            return localStorage.removeItem(this.userid + "." + name);
+        };
+        Local.prototype.clear = function () {
             localStorage.clear();
         };
     } else {
@@ -51,7 +53,7 @@ var Qdb = (function () {
         request(this.userid, 'POST', { name: name, obj: obj }, callback);
     };
     Remote.prototype.get = function (name, callback) {
-        request('GET', name, callback);
+        request('GET', { name: name }, callback);
     };
     Remote.prototype.rm = function (name, callback) {
         request('DELETE', name, callback);
@@ -61,7 +63,7 @@ var Qdb = (function () {
     };
 
     return function (userid) {
-        this.local = local;
+        this.local = new Local(userid);
         this.remote = new Remote(userid);
     };
 })();
