@@ -7,13 +7,13 @@ A lightweight and very-easy-to-use key-value pair database. Data can be stored p
 
 - Import
 
-```
+```html
 <script type="text/javascript" src="https://quick-db.herokuapp.com/quick-db.js"></script>
 ```
 
 - Usage
 
-```
+```javascript
 var db = new Qdb('your-userid-here');
 
 db.local.set('arr', [1, 2, 3]);
@@ -27,4 +27,4 @@ db.remote.rm('obj', function (err) { ... });
 db.remove.clear(function (err) { ... });
 ```
 
-- Demo [here](https://quick-db.herokuapp.com)
+- Demo [https://quick-db.herokuapp.com](https://quick-db.herokuapp.com)
