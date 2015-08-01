@@ -30,7 +30,7 @@ var Qdb = (function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     if (callback) {
-                        callback(null, JSON.parse(xhr.responseText));
+                        callback(null, xhr.responseText && JSON.parse(xhr.responseText));
                     }
                 } else {
                     if (callback) {

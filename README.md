@@ -26,3 +26,5 @@ db.remote.get('obj', function (err, obj) { ... }); // obj is the object {a: 1}
 db.remote.rm('obj', function (err) { ... });
 db.remove.clear(function (err) { ... });
 ```
+
+- Demo [here](https://quick-db.herokuapp.com)
