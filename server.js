@@ -32,7 +32,7 @@ client.on('ready', function () {
             if (err) { 
                 next(err);
             } else {
-                res.status(200).json(JSON.parse(reply.toString())).end();
+                res.status(200).json(reply && JSON.parse(reply.toString())).end();
             }
         });
         
