@@ -32,7 +32,7 @@ client.on('ready', function () {
             if (err) { 
                 next(err);
             } else {
-                res.status(200).json(JSON.parse(reply)).end();
+                res.status(200).json(JSON.parse(reply.toString())).end();
             }
         });
         
@@ -43,7 +43,7 @@ client.on('ready', function () {
         var name = req.body.name;
         var obj = req.body.obj;
         
-        client.set(userid + "." + name, JSON.stringfiy(obj), function (err) {
+        client.set(userid + "." + name, JSON.stringifiy(obj), function (err) {
             if (err) {
                 next(err);
             } else {
@@ -51,7 +51,7 @@ client.on('ready', function () {
             }
         });
     });
-    
+
     app.delete('/:userid', function (req, res, next) {
         var userid = req.params.userid;
         var name = req.query.name;
