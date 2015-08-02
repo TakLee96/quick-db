@@ -43,7 +43,7 @@ client.on('ready', function () {
         var name = req.body.name;
         var obj = req.body.obj;
         
-        client.set(userid + "." + name, JSON.stringifiy(obj), function (err) {
+        client.set(userid + "." + name, JSON.stringify(obj), function (err) {
             if (err) {
                 next(err);
             } else {
